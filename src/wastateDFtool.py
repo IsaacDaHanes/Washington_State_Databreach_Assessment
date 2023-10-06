@@ -59,7 +59,7 @@ class WaStateDBDF():
 
         Inputs: argument(use 'o' to output to images file, use 's' to output for viewing in jupyter notebook)
 
-        Outputs: a fig,axs object containing information about the table
+        Outputs: a fig,axs object containing information about the table or a .png file
         '''
         # help function
         def get_nanscount_helpfunction(dataframe):
@@ -125,6 +125,8 @@ class WaStateDBDF():
         '''
         return self.cleandf[columname].unique()
 
+    def plot_():
+        pass
 
 if __name__ == '__main__':
     Databreaches = WaStateDBDF('../data/wa_state_data_breaches.csv')

@@ -16,20 +16,30 @@
 - [Closing](#Closing)
 ## Introduction
 
-Will include Project Proposal info including the "thesis/hypothesis", database info/eda, and mvp statement
+This project is an exploration into data breaches on organizations in Washington State, which those organizations are legally responsible for reporting to the state if the breach affects Washington residents in excess of 500 people. The organizations may optionally report if the number of affected residents falls below that range. That goes to say that not all of the organizations listed are based in Washington State and is important to keep in mind moving ahead in looking at the data.
 
-### thesis/hypothesis/question
-This will be a thesis/hypothesis/question, something like: "Who is the biggest target for data breaches?" and "How are the data breaches most often occurring?"
+### Purpose
+The purpose of this project is to ask questions about the data and leverage those questions to draw useful statistical conclusions. The purpose is not to make conclusions on what to do with the information, or how it should be handled, though I will, with some hesitation, point out some inferences which could help strenghten the database in the future and allow for more definite conclusions to be drawn. This could assist State actors and agencies in making corrections and taking action, and may also serve as an example for others who would collect or analyze data.
 
-### database info/eda
-This will contain information about the data itself including where it came from, what the columns and rows are like, how many NaN values are there? What have I done to correct errors.
+### Database: Initial Exploratory Data Analysis
+The Data Breach Notifications Affecting Washington Residents database contains 945 rows, and 24 columns, four of those columns, including: 'Id', 'YearText', 'Year', and 'EndedOnDayDiscovered' have been dropped. The first three of those 4 were already represented in functionality by other columns, while the 'EndedOnDayDiscovered' column did not provide information as expected because the contained True or False values didn't logically account for the differences between when an attack ended before being discovered, or ended after being discovered, and in no way indicates whether an organization had any influence in stopping the attack.
 
-### mvp statement
-This will contain a statement on what I expect to provide with this data analysis, something like: "I will provide an analysis of existing data to answer my preponderances and indicate how the data could be better collected and organized"
+The CyberattackType column has been modified where any DataBreachCause entry states "Cyberattack" and CyberattackType states "NaN" to be better represented by "Unreported", as it cannot fall into an existing category since the definitions of those categories are not made explicit by the author. I have done this to make that data usable and be able to fully represent statistics involving Cyber Attacks.
+
+Here are some basic statistics about the database:
+
+<p align="left">
+  <img src="images/data_stats.png" width = 700 height = 850>
+</p>
+
+There are numerous categorical columns which make the data highly organizable and readable, which accounts for the missing values in some columns, as not every event will fit into every category. However, many of the missing values are due to input on part of the organizations responsible for submitting their reports. I was still able to draw a reasonable interpretation from the data.
+### Minimum Viable Product
+
+At a minimum I will provide the organization, display, and description of most pertinent collections of information contained in the database, as well as provide access to my tools and methods for doing so.
 
 ## Conclusive information
 
-Will include charts, graphs, and accompanying illustrations/descriptions of useful information from the database
+Below is the results of my exploration and analysis in graphical form, along with descriptions. The charts can be located as image files in the image directory, the method of collection is located in the src directory. All of the steps, and testing for which is layed out in the notebooks directory.
 
 ### Statistical Discoveries
 
