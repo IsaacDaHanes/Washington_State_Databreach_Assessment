@@ -46,20 +46,7 @@ class WaStateDBDF():
         # Enact the to_datetime_date_helpfunction on the dataframe
         to_datetime_date_helpfunction(wa_databreach_df)
 
-        # Reorder columns human-logically
-        wa_databreach_df = wa_databreach_df.loc[:,['','','','','','','','','','','','','','']]
-
         return wa_databreach_df
-    
-    @property
-    def columnlist(self):
-        '''
-        gets a list of columns from self.cleandf, stores as property
-        '''
-        
-        
-        
-        pass
 
     def get_data_stats(self):
         '''
