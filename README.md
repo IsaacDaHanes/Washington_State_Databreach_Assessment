@@ -4,16 +4,6 @@
   <img src="images/Headerimg.png" width = 800 height = 250>
 </p>
 
-## Table of Contents
-- [Introduction](#introduction)
-  - [Purpose](#purpose)
-  - [Database: Initial Exploratory Data Analysis](#database:-initial-exploratory-data-analysis)
-  - [Minimum Viable Product](#minimum-viable-product)
-- [Conclusive information](#Conclusive-information)
-  - [Statistical Discoveries](#Statistical-Discoveries)
-  - [Patterns](#Patterns)
-  - [Outliers and Major Discoveries](#Outliers-and-Major-Discoveries)
-- [Closing](#Closing)
 ## Introduction
 
 This project is an exploration into data breaches on organizations in Washington State, which those organizations are legally responsible for reporting to the state if the breach affects Washington residents in excess of 500 people. The organizations may optionally report if the number of affected residents falls below that range. That goes to say that not all of the organizations listed are based in Washington State and is important to keep in mind moving ahead in looking at the data.
