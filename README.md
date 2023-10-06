@@ -6,9 +6,9 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-  - [thesis/hypothesis/question](#thesis/hypothesis/question)
-  - [database info/eda](#database-info/eda)
-  - [mvp statement](#mvp-statement)
+  - [Purpose](#purpose)
+  - [Database: Initial Exploratory Data Analysis](#database:-initial-exploratory-data-analysis)
+  - [Minimum Viable Product](#minimum-viable-product)
 - [Conclusive information](#Conclusive-information)
   - [Statistical Discoveries](#Statistical-Discoveries)
   - [Patterns](#Patterns)
