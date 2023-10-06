@@ -12,6 +12,7 @@ class WaStateDBDF():
 
     def __init__(self, filepath):
         self.uncleandf = pd.read_csv(filepath)
+        self.columnlist = self.cleandf.columns.values
         
     @property
     def cleandf(self):
@@ -26,7 +27,13 @@ class WaStateDBDF():
             Outputs: dataframe with all values in columns that have 'date' in their 
                                                         name as datetime.date objects    
             '''
-            pass
+
+            colsarray = dataframe.columns.values
+
+            for x in colsarray:
+                if 'Date' in x:
+                    dataframe[f'{x}'] = pd.to_datetime(dataframe[f'{x}']).dt.date
+            return
 
         wa_databreach_df = self.uncleandf 
         # drop unusable or unneccessary columns
@@ -49,6 +56,9 @@ class WaStateDBDF():
         '''
         gets a list of columns from self.cleandf, stores as property
         '''
+        
+        
+        
         pass
 
     def get_data_stats(self):
