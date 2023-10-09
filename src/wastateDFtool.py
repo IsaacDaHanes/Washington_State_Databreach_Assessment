@@ -7,7 +7,7 @@ import argparse
 import os
 
 # setting a path variable to be used later
-mypath = "c:/Users/RGBMonster/galvanize/daimil10/case_studies/Mid_Term_Repos/Washington_State_Databreach_Assessment/images"
+mypath = "C:/Users/isaac/galvanize/daimil10/case_studies/Washington_State_Databreach_Assessment/images"
 
 # keeps pandas from displaying scientific notation
 pd.options.display.float_format = '{:.0f}'.format
@@ -148,14 +148,68 @@ class WaStateDBDF():
         else:
             plt.show()
 
+    def plot_businesses_affected(self, argument):
+        '''
+        Input: argument, 's' or 'o'
+        
+        Output: A pie chart of business types most affected, threshold count < 20, will save with 'o', or just show with 's'
+        '''
+
+        bustype = self.get_vcount('BusinessType')
+
+        fig, ax = plt.subplots()
+
+        ax.pie(bustype[bustype > 20], labels=bustype[bustype > 20].index, autopct='%1.1f%%')
+
+        ax.set_title('Businesses Most Affected')
+
+        if argument == 'o':
+            fig.savefig(f'{mypath}/Businesses Most Affected', bbox_inches='tight')
+        
+        elif argument == 's':
+            plt.show()
+        
+        else:
+            plt.show()
+
+    def plot_disinprog(self, argument):
+        '''
+        Inputs: argument, 's' or 'o'
+
+        Outputs: A pie chart indicating how often attacks were discovered in progress, will save with 'o', or just show with 's'
+        '''
+        
+        fig, ax = plt.subplots()
+
+        ax.pie(self.get_vcount('DiscoveredInProgress'), labels=['Not Discovered In Progress','Discovered In Progress'], autopct='%1.1f%%')
+        ax.set_title('How often were attacks discovered while they were happening?')
+
+        if argument == 'o':
+            fig.savefig(f'{mypath}/Discovered In Progress', bbox_inches='tight')
+        
+        elif argument == 's':
+            plt.show()
+        
+        else:
+            plt.show()
+
 if __name__ == '__main__':
     Databreaches = WaStateDBDF('../data/wa_state_data_breaches.csv')
 
     Databreaches.cleandf
     Databreaches.columnlist
+
     Databreaches.get_data_stats('s')
     Databreaches.get_data_stats('o')
+
     Databreaches.get_vcount('DiscoveredInProgress')
     Databreaches.get_uniques('DiscoveredInProgress')
+
     Databreaches.plot_pie('DataBreachCause','s', 'Causes of Data Breaches')
     Databreaches.plot_pie('DataBreachCause','o', 'Causes of Data Breaches')
+
+    Databreaches.plot_businesses_affected('s')
+    Databreaches.plot_businesses_affected('o')
+    
+    Databreaches.plot_disinprog('s')
+    Databreaches.plot_disinprog('o')

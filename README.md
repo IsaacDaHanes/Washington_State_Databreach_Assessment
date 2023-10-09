@@ -33,7 +33,30 @@ Below is the results of my exploration and analysis in graphical form, along wit
 
 ### Statistical Discoveries
 
-This is where the charts and their descriptions will go
+<p align="center">
+  <img src="images/Causes of Data Breaches.png" width = 400 height = 400>
+</p>
+
+The above image illustrates, from the database, the percentages relative to the number of each type of data breach cause. Cyberattacks is the main cause, which is good in a way, because physical security, by law, should be high enough to protect against unauthorized access or theft, and mistakes should be prevented by training and policy.
+
+Let's take a deeper look into Cyberattacks, what types there are, and how common each of them are:
+
+<p align="center">
+  <img src="images/Types of Cyber Attacks.png" width = 400 height = 400>
+</p>
+
+As you can see there is an Unreported section, near 9% of the total events, these are attacks which when reported the type was not selected by the reporter, so I have taken the liberty of grouping them, where they would not fit in anywhere else. To continue, it is good news that Phishing is relatively low on the chart, considering that most organizations do, or should, have training to prevent Phishing scams that are usually preventable. Ransomware seems to be the approach of choice for attackers, with Malware not being too far behind.
+
+<p align="center">
+  <img src="images/Industries Most Affected.png" width = 400 height = 400>
+</p>
+
+The most affected industry is business, and though I think with commmon sense the reason is easy to surmise I will not speculate here. The fact remains that almost 50% of breaches are in the business industry. While the breaches distributed across other industries are relatively low in comparison. Let's take a look at what types of businesses are affected.
+
+<p align="center">
+  <img src="images/Businesses Most Affected.png" width = 400 height = 400>
+</p>
+
 
 ### Patterns
 
