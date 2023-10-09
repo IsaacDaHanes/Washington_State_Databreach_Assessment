@@ -82,9 +82,38 @@ This image indicates what range the number of Washingtonians affected fall into 
 This scatterplot plots each unique date against the number of breaches that occurred on that date. The indicators on the bottom axis are seperated biannually and serve as a general organizational structure. By looking at the clusters of data we can see that on most given dates only one breach occured, however in the latter years recorded it could occasionally be as many as 2, and even less, 3. The outliers here are large comparitively and it may be tempting to conclude that those were coordinated attacks, especially if the manner in which each breach occurred were the same. With some more investigation this could be determined definitively. There is one outlier not included in this data which I will explore further below.
 
 ### Outliers and Major Discoveries
+Below is a small collection of information and charts which, according to the title, were outliers or discoveries I found either very interesting or very important.
+#### Feb 07 2020
+On 2022-02-07 there were 108 breaches conducted on a variety of organizations in the same manner(seen below).
 
-Any major discoveries such as the Feb 7th attacks, and anything that sticks out in the data as interesting or surprising can go here
+<p align="center">
+  <img src="images/2020-02-07 Attack Type Piechart.png" width = 400 height = 400>
+</p>
+
+<p align="center">
+  <img src="images/2020-02-07 Industry Type Piechart.png" width = 400 height = 400>
+</p>
+
+Interestingly enough the largest portion of those affected were Non-Profit/Charity, which does not seem to follow the overall pattern of breaches recorded in the database. There is plenty of inferential/circumstantial evidence to suggest that this was a coordinated attack but that statement cannot be made without further investigation, I could find very little to no articles on the event and none of them directly related to Washington State. Education makes a close second category here.
+
+<p align="center">
+  <img src="images/2020-02-07 Washingtonians Affected by Org.png" width = 400 height = 400>
+</p>
+
+This scatterplot allows us to see, for each individual organization breached on the given date, how many Washingtonians were affected. We can tell here that most of these organizations had a breach affecting less than 50,000 people. The single greates outlier makes up 1/3 of the total number affected.
+
+The Feb 07 2022 breaches, together(3460534) were greater than the single greatest breach that occured(3243664) by 216870 people!
+
+#### Top Ten
+
+Below is a small table, containing information on the top 10 largest data breaches recorded.
+
+<p align="center">
+  <img src="images/Top 10 Breaches.png">
+</p>
+
+Interestingly enough, the marginally small causes of data breaches as we've seen above, have ended up amongst the top 10 largest data breaches, and goes to show that every single breach should be handled with attention.
 
 ## Closing
 
-This is where the summation will go and the final conclusion statements.
+In closing, I have been able to glean very useful information from the database and compile them into suitable charts and graphs. Despite this success, there are a number of aforementioned categories of information that, if added, would provide an even more whole and useful collection of information related to data breaches in Washington State. As such I have tried not to draw definitive conclusions but to only make suggestions and provide a certain amount of direction to the imagination that might assist in exploring the matter further and may help others to take affirmative action against data breaches using this information. Thank you for your time and attention.

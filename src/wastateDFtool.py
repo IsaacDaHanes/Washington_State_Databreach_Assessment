@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import datetime as dt
 import argparse
 import os
+import dataframe_image as dfi
 
 # setting a path variable to be used later
 mypath = "C:/Users/isaac/galvanize/daimil10/case_studies/Washington_State_Databreach_Assessment/images"
@@ -143,6 +144,7 @@ class WaStateDBDF():
 
         return grouped_df   
 
+    # these are the methods used to plot various sections of the data
     def plot_pie(self, columnname, argument, title='Pie Chart'):
         '''
         Inputs: column name, an 's' or an 'o', and a title
@@ -265,6 +267,128 @@ class WaStateDBDF():
         else:
             plt.show()
 
+    # the below functions will explore the breaches that occured 2020-02-07
+    @property
+    def onebigx(self):
+        '''
+        Inputs: None
+
+        Outputs: Gets a table of the attacks that occurred on feb 07 2022 and saves it as a property.
+        '''
+
+        dtsv = dt.date(2020,2,7) # dtsv is date to search variable
+
+        onebigx = self.cleandf[self.cleandf['DateStart']==dtsv][['Name', 'IndustryType', 'CyberattackType', 'WashingtoniansAffected', 'DaysOfExposure', 'DaysElapsedBetweenEndAndDiscovery', 'DiscoveredInProgress', 'DaysOfExposure', 'DaysElapsedBeforeNotification']].reset_index().drop('index', axis=1)
+    
+        return onebigx
+    
+    def plot_onebigx_cybattacktype(self, argument):
+        '''
+        Inputs: argument, 's' or 'o'
+
+        Outputs: Pie chart of cyberattack types for breaches on 2020-02-07, 's' to show, 'o' to save
+        '''
+        # getting onebigx df
+        onebigx = self.onebigx
+        
+        # extracting values needed to plot
+        onebigx_vc = onebigx['CyberattackType'].value_counts()
+        onebigx_labels = onebigx_vc.index
+
+        fig, ax = plt.subplots()
+
+        ax.pie(onebigx_vc, labels=onebigx_labels, autopct='%1.1f%%')
+        ax.set_title('Cyber Attacks by Type')
+
+        if argument == 'o':
+            fig.savefig(f'{mypath}/2020-02-07 Attack Type Piechart', bbox_inches='tight')
+        
+        elif argument == 's':
+            plt.show()
+        
+        else:
+            plt.show()
+
+    def plot_onebigx_industrytype(self, argument):
+        '''
+        Inputs: argument, 's' or 'o'
+
+        Outputs: Pie chart of industry types for breaches on 2020-02-07, 's' to show, 'o' to save
+        '''
+        # getting onebigx df
+        onebigx = self.onebigx
+        
+        # extracting values needed to plot
+        onebigx_vc = onebigx['IndustryType'].value_counts()
+        onebigx_labels = onebigx_vc.index
+
+        fig, ax = plt.subplots()
+
+        ax.pie(onebigx_vc, labels=onebigx_labels, autopct='%1.1f%%')
+        ax.set_title('Industries Affected by Type')
+
+        if argument == 'o':
+            fig.savefig(f'{mypath}/2020-02-07 Industry Type Piechart', bbox_inches='tight')
+        
+        elif argument == 's':
+            plt.show()
+        
+        else:
+            plt.show()
+
+    def plot_onebigx_affected_scatter(self, argument):
+        '''
+        Inputs: argument, 's' or 'o'
+
+        Outputs: Scatterplot of number affected for breaches on 2020-02-07, 's' to show, 'o' to save
+        '''
+        # getting onebigx df
+        onebigx = self.onebigx
+        
+        # extracting values needed to plot
+        onebigx_vc = onebigx['IndustryType'].value_counts()
+        onebigx_labels = onebigx_vc.index
+
+        fig, ax = plt.subplots()
+
+        ax.scatter(onebigx.index, onebigx['WashingtoniansAffected'])
+        ax.set_title('Washingtonians Affected per Organization Breached')
+        ax.set_ylabel('Number Affected(In Millions)')
+
+        if argument == 'o':
+            fig.savefig(f'{mypath}/2020-02-07 Washingtonians Affected By Org', bbox_inches='tight')
+        
+        elif argument == 's':
+            plt.show()
+        
+        else:
+            plt.show()
+
+    # this function will save a viewable table of the top 10 largest breaches
+
+    def view_top_10(self):
+        '''
+        Inputs: None
+
+        Outputs: A .png file of the top 10 largest breaches in the database
+        '''
+
+        # getting a table of the top 10
+        biggestbreaches = self.cleandf[self.cleandf['WashingtoniansAffected'] > 500000].sort_values(by='WashingtoniansAffected',ascending=False).reset_index().drop('index', axis=1)[['Name', 'IndustryType', 'DataBreachCause', 'CyberattackType', 'WashingtoniansAffected']]
+        # renaming columns to make them more readable
+        biggestbreaches['Number of Washingtonians Affected'] = biggestbreaches['WashingtoniansAffected']
+        biggestbreaches['Organization'] = biggestbreaches['Name']
+        biggestbreaches['Industry Type'] = biggestbreaches['IndustryType']
+        biggestbreaches['Attack Type'] = biggestbreaches['CyberattackType']
+        biggestbreaches['Breach Cause'] = biggestbreaches['DataBreachCause']
+        biggestbreaches = biggestbreaches.drop(['WashingtoniansAffected', 'Name', 'IndustryType','CyberattackType', 'DataBreachCause'], axis=1)
+        # organizing the columns
+        biggestbreaches = biggestbreaches[['Organization', 'Industry Type', 'Breach Cause', 'Attack Type', 'Number of Washingtonians Affected']]
+
+        # export the table as a png
+        biggestbreaches.dfi.export('../images/Top 10 Breaches.png')
+
+
 if __name__ == '__main__':
     Databreaches = WaStateDBDF('../data/wa_state_data_breaches.csv')
 
@@ -293,3 +417,16 @@ if __name__ == '__main__':
 
     Databreaches.plot_by_date('s')
     Databreaches.plot_by_date('o')
+
+    Databreaches.onebigx
+
+    Databreaches.plot_onebigx_cybattacktype('s')
+    Databreaches.plot_onebigx_cybattacktype('o')
+
+    Databreaches.plot_onebigx_industrytype('s')
+    Databreaches.plot_onebigx_industrytype('o')
+
+    Databreaches.plot_onebigx_affected_scatter('s')
+    Databreaches.plot_onebigx_affected_scatter('o')
+
+    Databreaches.view_top_10()
