@@ -97,7 +97,7 @@ On 2022-02-07 there were 108 breaches conducted on a variety of organizations in
 Interestingly enough the largest portion of those affected were Non-Profit/Charity, which does not seem to follow the overall pattern of breaches recorded in the database. There is plenty of inferential/circumstantial evidence to suggest that this was a coordinated attack but that statement cannot be made without further investigation, I could find very little to no articles on the event and none of them directly related to Washington State. Education makes a close second category here.
 
 <p align="center">
-  <img src="images/2020-02-07 Washingtonians Affected By Org.png)" width = 400 height = 400>
+  <img src="images/2020-02-07 Washingtonians Affected By Org.png" width = 400 height = 400>
 </p>
 
 This scatterplot allows us to see, for each individual organization breached on the given date, how many Washingtonians were affected. We can tell here that most of these organizations had a breach affecting less than 50,000 people. The single greates outlier makes up 1/3 of the total number affected.
