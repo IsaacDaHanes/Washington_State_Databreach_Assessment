@@ -108,7 +108,8 @@ class WaStateDBDF():
         
         else:
             plt.show()
-    
+
+    # the two methods directly below will be used in the various plotting methods
     def get_vcount(self, columname):
         '''
         Inputs: column name
@@ -125,12 +126,36 @@ class WaStateDBDF():
         '''
         return self.cleandf[columname].unique()
 
-    def plot_():
-        pass
+    def plot_pie(self, columnname, argument, title='Pie Chart'):
+        '''
+        Inputs: column name, an 's' or an 'o', and a title
+
+        Ouputs: a pie chart for the given column, saved or shown, with given title, or 'Pie Chart' as default
+        '''
+        
+        fig, ax = plt.subplots()
+        
+        ax.pie(self.get_vcount(columnname), labels=self.get_vcount(columnname).index, autopct='%1.1f%%')
+        
+        ax.set_title(title)
+        
+        if argument == 'o':
+            fig.savefig(f'{mypath}/{title}', bbox_inches='tight')
+        
+        elif argument == 's':
+            plt.show()
+        
+        else:
+            plt.show()
 
 if __name__ == '__main__':
     Databreaches = WaStateDBDF('../data/wa_state_data_breaches.csv')
 
     Databreaches.cleandf
     Databreaches.columnlist
+    Databreaches.get_data_stats('s')
+    Databreaches.get_data_stats('o')
     Databreaches.get_vcount('DiscoveredInProgress')
+    Databreaches.get_uniques('DiscoveredInProgress')
+    Databreaches.plot_pie('DataBreachCause','s', 'Causes of Data Breaches')
+    Databreaches.plot_pie('DataBreachCause','o', 'Causes of Data Breaches')
