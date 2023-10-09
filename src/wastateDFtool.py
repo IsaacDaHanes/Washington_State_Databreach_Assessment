@@ -109,22 +109,39 @@ class WaStateDBDF():
         else:
             plt.show()
 
-    # the two methods directly below will be used in the various plotting methods
-    def get_vcount(self, columname):
+    # the three methods directly below will be used in the various plotting methods
+    def get_vcount(self, columnname):
         '''
         Inputs: column name
 
         Outputs: a pandas value count series object for the given column name
         '''
-        return self.cleandf[columname].value_counts()
+        return self.cleandf[columnname].value_counts()
     
-    def get_uniques(self, columname):
+    def get_uniques(self, columnname):
         '''
         Inputs: colum name
 
         Outputs: numpy array of unique values from the given column name
         '''
-        return self.cleandf[columname].unique()
+        return self.cleandf[columnname].unique()
+
+    def get_groupby(self, columnname, aggregation):
+        '''
+        Inputs: Column name and an argument specifying the aggregation type, 'c' or 's'
+
+        Outputs: A dataframe grouped in the fashion indicated by the input
+        '''
+        if aggregation == 'c':
+            grouped_df = self.cleandf.groupby(columnname).count()
+
+        elif aggregation == 's':
+           grouped_df = self.cleandf.groupby(columnname)
+
+        else:
+            grouped_df = self.cleandf.groupby(columnname).count()
+
+        return grouped_df   
 
     def plot_pie(self, columnname, argument, title='Pie Chart'):
         '''
@@ -193,6 +210,61 @@ class WaStateDBDF():
         else:
             plt.show()
 
+    def plot_affected_ranges(self, argument):
+        '''
+        Inputs: argument, 's' or 'o'
+
+        Outputs: A bar chart indicating how many attacks affected each range of Washingtonians, will save with 'o', or just show with 's'
+        '''
+
+        affected_ranges = self.get_groupby('WashingtoniansAffectedRange','c')['Name']
+
+        fig, ax = plt.subplots()
+
+        fig.tight_layout
+
+        ax.bar(affected_ranges.index, affected_ranges.values)
+
+        ax.set_title('Washingtonians Affected by Ranges')
+
+        ax.set_xticklabels(affected_ranges.index, rotation = 45, fontsize = 8)
+
+        if argument == 'o':
+            fig.savefig(f'{mypath}/Affected Ranges', bbox_inches='tight')
+        
+        elif argument == 's':
+            plt.show()
+        
+        else:
+            plt.show()
+
+    def plot_by_date(self, argument):
+        '''
+        Inputs: argument, 's' or 'o'
+
+        Outputs: A scatterplot indicating how many attacks were carried out on a given day, will save with 'o', or just show with 's'
+        '''
+        
+        plotbydate = self.get_groupby('DateStart', 'c')
+        plotdates_notfebsev = plotbydate[plotbydate['Name'] < 108]
+        
+        fig,ax = plt.subplots()
+
+        ax.scatter(plotdates_notfebsev.index, plotdates_notfebsev['Name'])
+
+        ax.set_title('Attacks by Date')
+
+        ax.set_xticklabels(ax.get_xticklabels(), rotation=65, fontsize=10)
+
+        if argument == 'o':
+            fig.savefig(f'{mypath}/Attacks By Date', bbox_inches='tight')
+        
+        elif argument == 's':
+            plt.show()
+        
+        else:
+            plt.show()
+
 if __name__ == '__main__':
     Databreaches = WaStateDBDF('../data/wa_state_data_breaches.csv')
 
@@ -213,3 +285,11 @@ if __name__ == '__main__':
     
     Databreaches.plot_disinprog('s')
     Databreaches.plot_disinprog('o')
+
+    Databreaches.get_groupby('DataBreachCause', 'c')
+
+    Databreaches.plot_affected_ranges('s')
+    Databreaches.plot_affected_ranges('o')
+
+    Databreaches.plot_by_date('s')
+    Databreaches.plot_by_date('o')

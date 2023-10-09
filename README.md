@@ -57,10 +57,29 @@ The most affected industry is business, and though I think with commmon sense th
   <img src="images/Businesses Most Affected.png" width = 400 height = 400>
 </p>
 
+The above chart excludes several categories below software, which were breached 20 or less times total. Retail is at the top, which I feel again may have an obvious cause. Other is a close second category. Here I will suggest that perhaps there is a better way to handle categorization or input, and should indeed require some investigation because a category that vulnerable should be able to be identified, described, and managed.
 
 ### Patterns
 
-Charts that indicate verifiable patterns in the data that could be actioned upon will go here
+Here we will identify several patterns in the data that may indicate what is happening when these breaches occur, or may require further investigation in order to take action or draw helpful conclusions.
+
+<p align="center">
+  <img src="images/Discovered In Progress.png" width = 400 height = 400>
+</p>
+
+We can see here that most of the time an attack was not discovered in progress. In this case I would suggest adding a column to collect additional information to explore why that may be, such as whether or not the organization was using an intrusion detection/intrusion protection device. For now, I do see this as a significant piece of information, that with some further investigation could provide some fruitful information.
+
+<p align="center">
+  <img src="images/Affected Ranges.png" width = 400 height = 400>
+</p>
+
+This image indicates what range the number of Washingtonians affected fall into for each data breach. Most breaches seemed to affect between 1,000 and 9,999 people, with 500-999 being a close second. This may speak to the ease with which a breach may be carried out by an attacker, the size of the database owned by the organization being targeted could be and indicator of security level for the attacker, these are not suggestions for conclusions but mere ideas with which to begin an investigation into finding a definite conclusion. It would be very useful to know if the organization was utilizing a honeypot or not to secure their network.
+
+<p align="center">
+  <img src="images/Attacks By Date.png" width = 400 height = 400>
+</p>
+
+This scatterplot plots each unique date against the number of breaches that occurred on that date. The indicators on the bottom axis are seperated biannually and serve as a general organizational structure. By looking at the clusters of data we can see that on most given dates only one breach occured, however in the latter years recorded it could occasionally be as many as 2, and even less, 3. The outliers here are large comparitively and it may be tempting to conclude that those were coordinated attacks, especially if the manner in which each breach occurred were the same. With some more investigation this could be determined definitively. There is one outlier not included in this data which I will explore further below.
 
 ### Outliers and Major Discoveries
 
