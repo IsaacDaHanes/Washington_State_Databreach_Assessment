@@ -51,7 +51,7 @@ As you can see there is an Unreported section, near 9% of the total events, thes
   <img src="images/Industries Most Affected.png" width = 400 height = 400>
 </p>
 
-The most affected industry is business, and though I think with commmon sense the reason is easy to surmise I will not speculate here. The fact remains that almost 50% of breaches are in the business industry. While the breaches distributed across other industries are relatively low in comparison. Let's take a look at what types of businesses are affected.
+The most affected industry is business, and though I think with common sense the reason is easy to surmise I will not speculate here. The fact remains that almost 50% of breaches are in the business industry. While the breaches distributed across other industries are relatively low in comparison. Let's take a look at what types of businesses are affected.
 
 <p align="center">
   <img src="images/Businesses Most Affected.png" width = 400 height = 400>
